@@ -1,8 +1,6 @@
-// import liveReload from './live-reload.ts'
+import { BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT } from './live-reload.ts'
 
-require('./live-reload')
-
-const BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT = process.env.BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT || 3001;
+// require('./live-reload')
 
 const autoReloadScriptUrl = `http://localhost:${BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT}/auto-reload.js`
 const autoReloadScript = `<script src="${autoReloadScriptUrl}"></script>`
@@ -18,6 +16,11 @@ const expressMiddleware = function (req, res, next) {
     }
 
     const defaultCallback = (err, html) => {
+
+      if (err) {
+        console.error(err)
+        return next(err)
+      }
       var htmlWithAutoReloadScript
       if (html.indexOf('</body>') === -1) {
         htmlWithAutoReloadScript = html + autoReloadScript
