@@ -1,5 +1,11 @@
 {
   "name": "bun-express-live-reload",
+  "version": "1.0.2",
+  "keywords": [
+    "bun",
+    "express",
+    "live-reload"
+  ],
   "devDependencies": {
     "@types/bun": "latest"
   },
