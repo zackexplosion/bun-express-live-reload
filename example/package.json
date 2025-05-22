@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "dev": "pm2-dev express.ts"
+  },
+  "dependencies": {
+    "@types/bun": "^1.2.14",
+    "@types/express": "^5.0.2",
+    "bun-express-live-reload": "..",
+    "express": "^5.1.0",
+    "pm2": "^6.0.6",
+    "pug": "^3.0.3"
+  },
+  "name": "example",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
