@@ -50,6 +50,10 @@ const autoReloadPlugin: BunPlugin = {
     // 啟動一個 WebSocket 伺服器來處理瀏覽器客戶端的連線。
     // 這個 WebSocket 伺服器會獨立於 Bun 的應用程式伺服器運行。
     // 只有當整個 Bun 進程停止並重新啟動時，這個 WebSocket 伺服器才會關閉並重新啟動。
+
+    console.log(
+      `Live reload server is running on port: ${BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT}`
+    )
     Bun.serve({
       port: BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT, // WebSocket 伺服器的埠號
       fetch(req, server) {
