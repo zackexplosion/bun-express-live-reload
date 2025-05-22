@@ -11,10 +11,6 @@
     "pug": "^3.0.3"
   },
   "name": "example",
-  "private": true,
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
   "peerDependencies": {
     "typescript": "^5"
   }

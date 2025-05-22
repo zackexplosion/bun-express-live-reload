@@ -24,9 +24,17 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
 
 ```
 
+the default live reload server port is 5454, you can change it by setting up environment variable.
+
+`.env` file
+
+```sh
+BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT=6464
+```
+
 ## To run the example app, clone this repo than
 
-```bash
+```sh
 cd example
 bun install
 bun run dev

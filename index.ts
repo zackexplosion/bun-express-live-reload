@@ -2,12 +2,12 @@
 
 require('./live-reload')
 
-const WEBSOCKET_PORT = process.env.WEBSOCKET_PORT || 3001;
+const BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT = process.env.BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT || 3001;
 
 const expressMiddleware = function (req, res, next) {
   // Store a reference to the original res.render method
   const originalRender = res.render;
-  const autoReloadScriptUrl = `http://localhost:${WEBSOCKET_PORT}/auto-reload.js`
+  const autoReloadScriptUrl = `http://localhost:${BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT}/auto-reload.js`
 
   res.render = function (view, options, callback) {
     if (typeof callback === 'function') {

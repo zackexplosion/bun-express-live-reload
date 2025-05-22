@@ -4,11 +4,11 @@ import { plugin, type BunPlugin } from "bun"
 const clients: Set<WebSocket> = new Set();
 // WebSocket 伺服器將監聽的埠號。
 // 請確保這個埠號在你的系統中是可用的，例如 3001 或 8081。
-const WEBSOCKET_PORT = process.env.WEBSOCKET_PORT || 3001;
+const BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT = process.env.BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT || 3001;
 
 const clientScript = `
   (function() {
-    const ws = new WebSocket('ws://localhost:${WEBSOCKET_PORT}');
+    const ws = new WebSocket('ws://localhost:${BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT}');
 
     // 這裡的 onmessage 將不會收到來自此插件的 'reload' 訊息，
     // 因為我們移除了伺服器端發送 'reload' 的邏輯（build.onEnd 不存在）。
@@ -51,7 +51,7 @@ const autoReloadPlugin: BunPlugin = {
     // 這個 WebSocket 伺服器會獨立於 Bun 的應用程式伺服器運行。
     // 只有當整個 Bun 進程停止並重新啟動時，這個 WebSocket 伺服器才會關閉並重新啟動。
     Bun.serve({
-      port: WEBSOCKET_PORT, // WebSocket 伺服器的埠號
+      port: BUN_EXPRESS_LIVE_RELOAD_WEBSOCKET_PORT, // WebSocket 伺服器的埠號
       fetch(req, server) {
         // 嘗試將 HTTP 請求升級為 WebSocket 連線。
         if (server.upgrade(req)) {
